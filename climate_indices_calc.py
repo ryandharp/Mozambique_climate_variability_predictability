@@ -7,10 +7,7 @@ Created 10/21/2020 by Ryan Harp.
 
 ## Importing Modules
 import xarray as xr
-import matplotlib.pyplot as plt
 import numpy as np
-import cartopy as ct
-import cartopy.crs as ccrs
 import rdh
 
 
@@ -36,8 +33,8 @@ del sst_monthly_1981_2010
 nino3p4 = np.array(nino3p4_monthly)
 nino3p4_13_month_running_mean = rdh.moving_average(nino3p4, 13)
 
-np.savetxt("nino3p4.csv", nino3p4, delimiter=",")
-np.savetxt("nino3p4_13.csv", nino3p4_13_month_running_mean, delimiter=",")
+# np.savetxt("output/nino3p4.csv", nino3p4)
+# np.savetxt("output/nino3p4_13.csv", nino3p4_13_month_running_mean)
 
 
 ## Calculating SIOD Index
@@ -50,11 +47,6 @@ siod_modified_box_diff = sst_anom.sel(lat=slice(-37, -27), lon=slice(75, 85)).me
 siod_modified = np.array(siod_modified_box_diff)
 siod_modified_13_month_running_mean = rdh.moving_average(siod_modified, 13)
 
-# np.savetxt("siod_conventional.csv", siod_conventional, delimiter=",")
-# np.savetxt("siod_modified.csv", siod_modified, delimiter=",")
-# np.savetxt("siod_modified_13_month_running_mean.csv", siod_modified_13_month_running_mean, delimiter=",")
-
-
-fig = plt.figure()
-ax = plt.plot(time, siod_monthly, color='r')
-plt.show()
+# np.savetxt("output/siod_conventional.csv", siod_conventional, delimiter=",")
+# np.savetxt("output/siod_modified.csv", siod_modified, delimiter=",")
+# np.savetxt("output/siod_modified_13_month_running_mean.csv", siod_modified_13_month_running_mean, delimiter=",")
